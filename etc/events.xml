@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_quote_add_item">
+        <observer name="bonlineco_flashsale_set_quote_item_price"
+                  instance="Bonlineco\FlashSale\Observer\SetQuoteItemFlashSalePrice"/>
+    </event>
+    <event name="sales_quote_collect_totals_before">
+        <observer name="bonlineco_flashsale_update_quote_item_price"
+                  instance="Bonlineco\FlashSale\Observer\UpdateQuoteItemFlashSalePrice"/>
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="bonlineco_flashsale_set_cart_item_price"
+                  instance="Bonlineco\FlashSale\Observer\SetQuoteItemFlashSalePrice"/>
+    </event>
+</config>

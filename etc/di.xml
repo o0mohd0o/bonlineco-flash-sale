@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Pricing\Price\SpecialPrice">
+        <plugin name="bonlineco_flashsale_disable_special_price"
+                type="Bonlineco\FlashSale\Plugin\Pricing\Price\SpecialPriceDisablePlugin"
+                sortOrder="1"/>
+    </type>
+    <virtualType name="Magento\Catalog\Pricing\Price\Pool" type="Magento\Framework\Pricing\Price\Pool">
+        <arguments>
+            <argument name="prices" xsi:type="array">
+                <item name="flash_sale_price" xsi:type="string">Bonlineco\FlashSale\Pricing\Price\FlashSalePrice</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="bonlineco_flashsale_product_get_final_price"
+                type="Bonlineco\FlashSale\Plugin\Model\ProductGetFinalPricePlugin"
+                sortOrder="100"/>
+    </type>
+</config>
+
